@@ -19,7 +19,7 @@ We adopt VisualBert implemented in the [Transformers](https://github.com/hugging
 3. Requirements for Transformers
 4. Requirements for [COCO Caption Evaluation](https://github.com/salaniz/pycocoevalcap), please clone the repo to `ROOT/model`, where `ROOT` is the root directory of our project, and install the corresponding dependencies.
 
-### Data Pre-processing
+### Data
 1. Download our [GQA-REGEX dataset](https://drive.google.com/file/d/1taHaNKUveMwfHLayuS5CZKHt_M903RN-/view?usp=sharing). The file includes both the raw explanations and converted explanations for model training.
 2. Download the [GQA Dataset](https://cs.stanford.edu/people/dorarad/gqa/download.html).
 3. Download the [GQA-OOD Dataset](https://github.com/gqa-ood/GQA-OOD)
@@ -28,7 +28,7 @@ We adopt VisualBert implemented in the [Transformers](https://github.com/hugging
   ```
   python2 ./preprocessing/extract_tsv.py --input $TSV_FILE --output $FEATURE_DIR
   ```
-  
+
 ### Constructing Explanations from Scratch
 We also provide our functional program for constructing the explanations from scratch:
 1. Generate our atomic operations abstracted from GQA annotations:

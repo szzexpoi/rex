@@ -3,6 +3,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import math
+import os
 from torch.autograd import Variable
 import numpy as np
 from torch.nn.utils.weight_norm import weight_norm
@@ -29,9 +30,9 @@ class GRU(nn.Module):
         return state
 
 
-class VisualBert_REGEX(nn.Module):
-    def __init__(self,num_roi=36,nb_answer=2000,nb_vocab=2000,num_step=12,use_structure=False):
-        super(VisualBert_REGEX,self).__init__()
+class VisualBert_REX(nn.Module):
+    def __init__(self,num_roi=36,nb_answer=2000,nb_vocab=2000,num_step=12,use_structure=False,lang_dir=None):
+        super(VisualBert_REX,self).__init__()
         self.nb_vocab = nb_vocab
         self.num_roi = num_roi
         self.nb_answer = nb_answer
@@ -69,7 +70,7 @@ class VisualBert_REGEX(nn.Module):
 
         if self.use_structure:
             self.structure_gate = nn.Linear(self.hidden_size,1)
-            self.structure_mapping = nn.Parameter(torch.load('structure_mapping_base.pth'),requires_grad=False)
+            self.structure_mapping = nn.Parameter(torch.load(os.path.join(lang_dir,'structure_mapping_base.pth'),requires_grad=False))
 
 
         for module in [self.embedding,self.bert_encoder]:
@@ -164,9 +165,9 @@ class VisualBert_REGEX(nn.Module):
             return output_ans, output_sent
 
 
-class VisualBert_REGEX_transfer(nn.Module):
-    def __init__(self,num_roi=36,nb_answer=2000,nb_vocab=2000,num_step=12,use_structure=False,anno_type='exp'):
-        super(VisualBert_REGEX_transfer,self).__init__()
+class VisualBert_REX_transfer(nn.Module):
+    def __init__(self,num_roi=36,nb_answer=2000,nb_vocab=2000,num_step=12,use_structure=False,anno_type='exp',lang_dir=None):
+        super(VisualBert_REX_transfer,self).__init__()
         self.nb_vocab = nb_vocab
         self.num_roi = num_roi
         self.nb_answer = nb_answer
@@ -203,7 +204,7 @@ class VisualBert_REGEX_transfer(nn.Module):
 
         if self.use_structure:
             self.structure_gate = nn.Linear(self.hidden_size,1)
-            self.structure_mapping = nn.Parameter(torch.load('structure_mapping_base.pth'),requires_grad=False)
+            self.structure_mapping = nn.Parameter(torch.load(os.path.join(lang_dir,'structure_mapping_base.pth'),requires_grad=False))
 
 
         for module in [self.embedding,self.bert_encoder]:

@@ -9,7 +9,7 @@ import torch.optim as optim
 import torch.nn.functional as F
 from dataloader import Batch_generator_transfer
 from evaluation import organize_eval_data, construct_sentence, Grounding_Evaluator, Attribute_Evaluator
-from bert_exp import VisualBert_REGEX_transfer
+from bert_exp import VisualBert_REX_transfer
 from torch.autograd import Variable
 from torch.nn.utils import clip_grad_norm_
 import numpy as np
@@ -90,7 +90,7 @@ def main_exp():
     attribute_evaluator = Attribute_Evaluator(args.lang_dir)
 
 
-    model = VisualBert_REGEX_transfer(nb_vocab=len(exp2idx),num_step=args.max_exp_len,use_structure=args.use_structure,anno_type=args.anno_type)
+    model = VisualBert_REX_transfer(nb_vocab=len(exp2idx),num_step=args.max_exp_len,use_structure=args.use_structure,anno_type=args.anno_type,lang_dir=args.lang_dir)
     model = nn.DataParallel(model)
     model = model.cuda()
 
@@ -229,7 +229,7 @@ def main_vqa():
     attribute_evaluator = Attribute_Evaluator(args.lang_dir)
 
 
-    model = VisualBert_REGEX_transfer(nb_answer=len(ans2idx),nb_vocab=len(exp2idx),num_step=args.max_exp_len,use_structure=args.use_structure,anno_type=args.anno_type)
+    model = VisualBert_REX_transfer(nb_answer=len(ans2idx),nb_vocab=len(exp2idx),num_step=args.max_exp_len,use_structure=args.use_structure,anno_type=args.anno_type,lang_dir=args.lang_dir)
     model.load_state_dict(torch.load(args.weights),strict=False)
     model = nn.DataParallel(model)
     model = model.cuda()
@@ -386,7 +386,7 @@ def evaluation():
         idx2exp[exp2idx[k]] = k
 
 
-    model = VisualBert_REGEX_transfer(nb_answer=len(ans2idx),nb_vocab=len(exp2idx),num_step=args.max_exp_len,use_structure=args.use_structure)
+    model = VisualBert_REX_transfer(nb_answer=len(ans2idx),nb_vocab=len(exp2idx),num_step=args.max_exp_len,use_structure=args.use_structure,lang_dir=args.lang_dir)
     model.load_state_dict(torch.load(args.weights))
     model = model.cuda()
 

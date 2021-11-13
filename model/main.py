@@ -9,7 +9,7 @@ import torch.optim as optim
 import torch.nn.functional as F
 from dataloader import Batch_generator_bert_joint_baseline, Batch_generator_bert_submission
 from evaluation import organize_eval_data, construct_sentence, Grounding_Evaluator, Attribute_Evaluator
-from bert_exp import VisualBert_REGEX
+from bert_exp import VisualBert_REX
 from torch.autograd import Variable
 from torch.nn.utils import clip_grad_norm_
 import numpy as np
@@ -97,7 +97,7 @@ def main():
     attribute_evaluator = Attribute_Evaluator(args.lang_dir)
 
 
-    model = VisualBert_REGEX(nb_answer=len(ans2idx),nb_vocab=len(exp2idx),num_step=args.max_exp_len,use_structure=args.use_structure)
+    model = VisualBert_REX(nb_answer=len(ans2idx),nb_vocab=len(exp2idx),num_step=args.max_exp_len,use_structure=args.use_structure,lang_dir=args.lang_dir)
 
     model = nn.DataParallel(model)
     model = model.cuda()
@@ -255,7 +255,7 @@ def evaluation():
         idx2exp[exp2idx[k]] = k
 
 
-    model = VisualBert_REGEX(nb_answer=len(ans2idx),nb_vocab=len(exp2idx),num_step=args.max_exp_len,use_structure=args.use_structure)
+    model = VisualBert_REX(nb_answer=len(ans2idx),nb_vocab=len(exp2idx),num_step=args.max_exp_len,use_structure=args.use_structure,lang_dir=args.lang_dir)
 
     model.load_state_dict(torch.load(args.weights))
     model = model.cuda()
@@ -316,7 +316,7 @@ def submission():
         idx2exp[exp2idx[k]] = k
 
 
-    model = VisualBert_REGEX(nb_answer=len(ans2idx),nb_vocab=len(exp2idx),num_step=args.max_exp_len,use_structure=args.use_structure)
+    model = VisualBert_REX(nb_answer=len(ans2idx),nb_vocab=len(exp2idx),num_step=args.max_exp_len,use_structure=args.use_structure,lang_dir=args.lang_dir)
     model.load_state_dict(torch.load(args.weights))
     model = nn.DataParallel(model)
     model = model.cuda()

@@ -1,7 +1,7 @@
-# REGEX: Reasoning-aware and Grounding Explanation
+# REX: Reasoning-aware and Grounding Explanation
 
-This code implements the REasoning-aware and Grounding EXplanation (REGEX) framework. It consists of:
-- a new GQA-REGEX dataset with 1,040,830 multi-modal explanations for visual reasoning, and a functional program for automatically constructing the explanations based on reasoning process
+This code implements the Reasoning-aware and Grounding EXplanation (REX) framework. It consists of:
+- a new GQA-REX dataset with 1,040,830 multi-modal explanations for visual reasoning, and a functional program for automatically constructing the explanations based on reasoning process
 - a novel explanation generation method that explicitly maps visual grounding results to explanations
 
 ### Reference
@@ -20,7 +20,7 @@ We adopt VisualBert implemented in the [Transformers](https://github.com/hugging
 4. Requirements for [COCO Caption Evaluation](https://github.com/salaniz/pycocoevalcap), please clone the repo to `ROOT/model`, where `ROOT` is the root directory of our project, and install the corresponding dependencies.
 
 ### Data
-1. Download our [GQA-REGEX dataset](https://drive.google.com/file/d/1taHaNKUveMwfHLayuS5CZKHt_M903RN-/view?usp=sharing). The file includes both the raw explanations and converted explanations for model training.
+1. Download our [GQA-REX dataset](https://drive.google.com/file/d/19FRatf3OwUzpELHrhvmmS_EI1P1bu78C/view?usp=sharing). The file includes both the raw explanations and converted explanations for model training.
 2. Download the [GQA Dataset](https://cs.stanford.edu/people/dorarad/gqa/download.html).
 3. Download the [GQA-OOD Dataset](https://github.com/gqa-ood/GQA-OOD)
 4. Download the [bottom-up features](https://github.com/airsplay/lxmert) and unzip it.

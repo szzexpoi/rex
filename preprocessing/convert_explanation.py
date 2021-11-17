@@ -84,7 +84,7 @@ for split in ['train','val']:
 
         # replace objects in the text with grounding positions
         for cur_obj in grounding_pair:
-            processed_exp = processed_exp.replace(cur_obj,cur_sg[cur_obj]['name']) # non-grounded explanation for ablation study
+            processed_exp = processed_exp.replace(cur_obj,grounding_pair[cur_obj])
 
         # remove ''
         processed_exp = [cur for cur in processed_exp.split(' ') if cur not in ['',' ']]

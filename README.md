@@ -7,7 +7,12 @@ This code implements the Reasoning-aware and Grounding EXplanation (REX) framewo
 ### Reference
 If you use our code or data, please cite our paper:
 ```
-TBD
+@InProceedings{rex2022,
+author = {Chen, Shi and Zhao, Qi},
+title = {REX: Reasoning-aware and Grounding Explanation},
+booktitle = {CVPR},
+year = {2022}
+}
 ```
 
 ### Disclaimer
@@ -20,7 +25,7 @@ We adopt VisualBert implemented in the [Transformers](https://github.com/hugging
 4. Requirements for [COCO Caption Evaluation](https://github.com/salaniz/pycocoevalcap), please clone the repo to `ROOT/model`, where `ROOT` is the root directory of our project, and install the corresponding dependencies.
 
 ### Data
-1. Download our [GQA-REX dataset](https://drive.google.com/file/d/19FRatf3OwUzpELHrhvmmS_EI1P1bu78C/view?usp=sharing). The file includes both the raw explanations and converted explanations for model training.
+1. Download our [GQA-REX dataset](https://drive.google.com/file/d/1tppPRVtiLTwc_oYQw6Q0OvSGFpI8ZCtg/view?usp=sharing). The file includes both the raw explanations and converted explanations for model training. The explanations correspond to balanced questions in the GQA dataset. We also provide the [explanations for all 14M GQA training questions](https://drive.google.com/file/d/1UupJyqbnlTx88Vtggex9MoVuxAw89xnU/view?usp=sharing).
 2. Download the [GQA Dataset](https://cs.stanford.edu/people/dorarad/gqa/download.html).
 3. Download the [GQA-OOD Dataset](https://github.com/gqa-ood/GQA-OOD)
 4. Download the [bottom-up features](https://github.com/airsplay/lxmert) and unzip it.

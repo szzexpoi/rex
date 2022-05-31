@@ -84,7 +84,7 @@ def main_exp():
         idx2exp[exp2idx[k]] = k
 
     # initialize evaluator for visual grounding
-    grounding_evaluator = Grounding_Evaluator(args.lang_dir,args.bbox,args.sg_dir)
+    grounding_evaluator = Grounding_Evaluator(args.lang_dir,args.bbox_dir,args.sg_dir)
 
     # initialize evaluator for attributes
     attribute_evaluator = Attribute_Evaluator(args.lang_dir)

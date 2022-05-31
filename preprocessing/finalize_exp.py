@@ -39,7 +39,7 @@ del duplicated_word['dvds']
 
 start = time.time()
 for split in ['train','val']:
-    explanation = json.load(open(os.path.join(args.data,'finalized_explanation_'+split+'.json')))
+    explanation = json.load(open(os.path.join(args.data,'converted_explanation_'+split+'.json')))
     processed_data = dict()
     for idx,qid in enumerate(explanation):
         if 'ERROR' in explanation[qid]:

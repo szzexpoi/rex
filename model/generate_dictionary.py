@@ -44,7 +44,7 @@ for i in range(1,17):
 
 exp_len = dict()
 for split in ['train','val']:
-	explanation = json.load(open(os.path.join(args.exp,'converted_explanation_'+split+'_v4.json')))
+	explanation = json.load(open(os.path.join(args.exp,'converted_explanation_'+split+'.json')))
 	question = json.load(open(os.path.join(args.question,split+'_balanced_questions.json')))
 	for qid in explanation:
 		cur_exp = explanation[qid].replace('?','').replace(',',' ').replace('.','')

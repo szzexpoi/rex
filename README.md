@@ -9,7 +9,7 @@ If you use our code or data, please cite our paper:
 ```
 @InProceedings{rex2022,
 author = {Chen, Shi and Zhao, Qi},
-title = {REX: Reasoning-aware and Grounding Explanation},
+title = {REX: Reasoning-aware and Grounded Explanation},
 booktitle = {CVPR},
 year = {2022}
 }

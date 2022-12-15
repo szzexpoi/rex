@@ -1,6 +1,6 @@
 # REX: Reasoning-aware and Grounding Explanation
 
-This code implements the Reasoning-aware and Grounding EXplanation (REX) framework. It consists of:
+This code implements the Reasoning-aware and Grounded EXplanation (REX) framework. It consists of:
 - a new GQA-REX dataset with 1,040,830 multi-modal explanations for visual reasoning, and a functional program for automatically constructing the explanations based on reasoning process
 - a novel explanation generation method that explicitly maps visual grounding results to explanations
 

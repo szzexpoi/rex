@@ -78,6 +78,8 @@ class Batch_generator(data.Dataset):
             self.pure_answer[qid] = cur_A
             if cur_A in self.ans2idx:
                 cur_A = self.ans2idx[cur_A]
+            elif cur_A not in self.ans2idx and self.mode == 'train':
+                continue # ignore training questions with rare answers
 
             if self.mode == 'train':
                 if qid in self.explanation:
@@ -145,7 +147,6 @@ class Batch_generator(data.Dataset):
 
         # load image features
         img = np.load(os.path.join(self.img_dir,str(img_id)+'.npy'))
-
 
         if self.mode == 'train':
             converted_ans = torch.zeros(len(self.ans2idx),)
@@ -223,8 +224,11 @@ class Batch_generator_transfer(data.Dataset):
             if cur_A in ANS_CONVERT:
                 cur_A = ANS_CONVERT[cur_A]
             self.pure_answer[qid] = cur_A
+            
             if cur_A in self.ans2idx:
                 cur_A = self.ans2idx[cur_A]
+            elif cur_A not in self.ans2idx and self.mode == 'train':
+                continue # ignore training questions with rare answers
 
             if self.mode == 'train':
                 raw_exp = self.explanation[qid].replace('?','').replace(',',' ').replace('.','').split(' ')

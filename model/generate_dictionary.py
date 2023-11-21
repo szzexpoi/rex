@@ -36,7 +36,7 @@ ANS_CONVERT = {
 exp_dict = dict()
 ans_dict = dict()
 
-insert special tokens for visual grounding
+# insert special tokens for visual grounding
 for i in range(36):
 	exp_dict['#'+str(i)] = len(exp_dict)+1 # indices for grounding
 for i in range(1,17):
